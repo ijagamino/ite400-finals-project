@@ -23,6 +23,7 @@ Our client's business specializes in a wide variety of flavor desserts; it's you
     - [Seller Folder](#seller-folder)
     - [Root Directory](#root-directory)
     - [Extra Folders/Files](#extra-foldersfiles)
+    - [Notes](#notes)
   - [Issues](#issues)
 - [Products](#products)
   - [Types of Cakes](#types-of-cakes)
@@ -173,6 +174,10 @@ Contains pages that do not require logging in to be displayed.
 - #### Extra Folders/Files
 
 Extra folders and files will be added as the project progresses.
+
+- #### Notes
+
+bootstrap.php is NOT the Bootstrap framework, it is only there to include all the required files such config.php and files in helpers/.
 
 ### Issues
 
