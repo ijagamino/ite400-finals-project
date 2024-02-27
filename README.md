@@ -181,7 +181,11 @@ bootstrap.php is NOT the Bootstrap framework, it is only there to include all th
 
 ### Issues
 
-Submit an issue on the repository page if you find any problems that need fixing.
+Submit an issue on the repository page if
+- There are problems that need to be fixed
+- There are files or tasks that need to be worked on.
+
+Make sure to label issues for better clarity.
 
 ---
 
