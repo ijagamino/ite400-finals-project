@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,4 +8,4 @@
   </head>
   <body>
     <?php include APPROOT.'/inc/navbar.php'?>
-    <main>
+    <main class="container mt-3">
