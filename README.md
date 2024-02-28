@@ -14,13 +14,13 @@ Our client's business specializes in a wide variety of flavor desserts; it's you
     - [Videos](#videos)
     - [Application](#application)
   - [Folder/File Structure](#folderfile-structure)
-    - [Buyer Folder](#buyer-folder)
+    - [Admin Folder](#admin-folder)
     - [Config Folder](#config-folder)
     - [CSS Folder](#css-folder)
     - [Helpers Folder](#helpers-folder)
     - [Image Folder](#image-folder)
     - [Inc Folder](#inc-folder)
-    - [Seller Folder](#seller-folder)
+    - [User Folder](#user-folder)
     - [Root Directory](#root-directory)
     - [Extra Folders/Files](#extra-foldersfiles)
     - [Notes](#notes)
@@ -82,7 +82,7 @@ If you are new to using git, here are some useful resources to get started
 
 ```
 ┌cake_hub
-├── buyer
+├── admin
 │   ├── index.php
 │   ├── login.php
 │   ├── profile.php
@@ -102,7 +102,7 @@ If you are new to using git, here are some useful resources to get started
 │   ├── footer.php
 │   ├── header.php
 │   ├── navbar.php
-├── seller
+├── user
 │   ├── index.php
 │   ├── login.php
 │   ├── profile.php
@@ -127,7 +127,9 @@ include APPROOT.'/inc/header.php';
 <!-- End of content -->
 <?php include APPROOT.'/inc/footer.php'; ?>
 ```
+
 Just add the content inbetween the header and php includes.
+
 ```
 <?php
 require_once 'bootstrap.php';
@@ -137,11 +139,12 @@ include APPROOT.'/inc/header.php';
 <p>Kuya aikhen is my eyeballs!</p>
 <?php include APPROOT.'/inc/footer.php'; ?>
 ```
+
 Like so.
 
-- #### Buyer Folder
+- #### Admin Folder
 
-Contains buyer-specific pages such as their overview(index), login, and profile page.
+Contains admin-specific pages such as their overview(index), login, and profile page.
 
 - #### Config Folder
 
@@ -163,9 +166,9 @@ Contains images to be displayed on the website.
 
 Contains layouts for header, footer and navbar.
 
-- #### Seller Folder
+- #### User Folder
 
-Contains seller-specific pages such as their overview(index), login, and profile page.
+Contains buyer-specific pages such as their overview(index), login, and profile page.
 
 - #### Root Directory
 
@@ -181,8 +184,8 @@ bootstrap.php is NOT the Bootstrap framework, it is only there to include all th
 
 ### Issues
 
-Submit an issue on the repository page if
-- There are problems that need to be fixed
+Submit an issue on the repository page if:
+- There are problems that need to be fixed.
 - There are files or tasks that need to be worked on.
 
 Make sure to label issues for better clarity.
@@ -205,7 +208,7 @@ Our client’s business specializes in desserts such as cakes. Cake flavors incl
 
 #### Hero Image
 
-A mouthwatering photo showcasing your most popular cake or a beautiful arrangement of specialty cakes.</p>
+A mouthwatering photo showcasing your most popular cake or a beautiful arrangement of specialty cakes.
 
 #### Clear Value Proposition
 
