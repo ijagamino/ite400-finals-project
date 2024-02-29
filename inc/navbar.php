@@ -1,6 +1,6 @@
-<header class="shadow">
-  <nav class="container navbar navbar-expand-lg">
-    <a class="navbar-brand" href="<?php echo URLROOT; ?>/index.php">Cake Hub</a>
+<header class="shadow bg-primary sticky-top">
+  <nav class="container navbar text-white navbar-expand-lg">
+    <a class="navbar-brand text-white" href="<?php echo URLROOT; ?>/index.php">Cake Hub</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,10 +8,13 @@
       <!-- Displays when user is not logged in  -->
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/user/login.php"?>Log In</a>
+          <a class="nav-link text-white" href="<?php echo URLROOT; ?>/menu.php"?>Menu</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/register.php"?>Register</a>
+          <a class="nav-link text-white" href="<?php echo URLROOT; ?>/user/login.php"?>Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="<?php echo URLROOT; ?>/user/register.php"?>Register</a>
         </li>
       </ul>
       <!-- Displays when user is buyer -->
@@ -27,22 +30,16 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/index.php"?>Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/menu.php"?>Menu</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/about.php"?>About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/contact.php"?>Contact</a>
-        </li>
+        <!-- <li class="nav-item"> -->
+        <!--   <a class="nav-link" href="<?php echo URLROOT; ?>/about.php"?>About</a> -->
+        <!-- </li> -->
+        <!-- <li class="nav-item"> -->
+        <!--   <a class="nav-link" href="<?php echo URLROOT; ?>/contact.php"?>Contact</a> -->
+        <!-- </li> -->
       </ul>
       <form class="d-flex">
         <input type="search" class="form-control me-2" placeholder="Search">
-        <button class="btn btn-outline-success">Search</button>
+        <button class="btn btn-dark">Search</button>
       </form>
     </div>
   </nav>

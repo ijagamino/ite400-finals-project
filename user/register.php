@@ -4,7 +4,7 @@ include APPROOT.'/inc/header.php';
 ?>
 <section class="row">
     <div class="col-6 mx-auto">
-        <div class="card">
+        <div class="shadow card">
             <form action="" method="POST" class="">
                 <header class="card-header">
                     <h1>Registration Form</h1>
