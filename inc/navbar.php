@@ -8,10 +8,13 @@
       <!-- Displays when user is not logged in  -->
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT; ?>/menu.php"?>Menu</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/user/login.php"?>Log In</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/register.php"?>Register</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/user/register.php"?>Register</a>
         </li>
       </ul>
       <!-- Displays when user is buyer -->
@@ -27,18 +30,12 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/index.php"?>Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/menu.php"?>Menu</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/about.php"?>About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/contact.php"?>Contact</a>
-        </li>
+        <!-- <li class="nav-item"> -->
+        <!--   <a class="nav-link" href="<?php echo URLROOT; ?>/about.php"?>About</a> -->
+        <!-- </li> -->
+        <!-- <li class="nav-item"> -->
+        <!--   <a class="nav-link" href="<?php echo URLROOT; ?>/contact.php"?>Contact</a> -->
+        <!-- </li> -->
       </ul>
       <form class="d-flex">
         <input type="search" class="form-control me-2" placeholder="Search">
