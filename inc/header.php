@@ -8,4 +8,4 @@
   </head>
   <body>
     <?php include APPROOT.'/inc/navbar.php'?>
-    <main class="container">
+    <main class="container py-3">
