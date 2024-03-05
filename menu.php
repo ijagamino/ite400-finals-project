@@ -25,21 +25,21 @@ Feature your signature desserts or seasonal creations with detailed descriptions
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="<?php echo URLROOT; ?>/img/cake.jpeg" class="d-block w-100" alt="...">
+        <img src="<?= URLROOT; ?>/img/cake.jpeg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>First slide label</h5>
           <p>Some representative placeholder content for the first slide.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="<?php echo URLROOT; ?>/img/cake.jpeg" class="d-block w-100" alt="...">
+        <img src="<?= URLROOT; ?>/img/cake.jpeg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Second slide label</h5>
           <p>Some representative placeholder content for the second slide.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="<?php echo URLROOT; ?>/img/cake.jpeg" class="d-block w-100" alt="...">
+        <img src="<?= URLROOT; ?>/img/cake.jpeg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Third slide label</h5>
           <p>Some representative placeholder content for the third slide.</p>
@@ -58,21 +58,21 @@ Feature your signature desserts or seasonal creations with detailed descriptions
   <!-- <h2 class="col display-2">Featured Products</h2>
 <div class="card-group">
 <div class="card shadow">
-<img src="<?php echo URLROOT; ?>/img/cake.jpeg" class="card-img-top object-fit-cover" alt="" style="height: 16rem;">
+<img src="<?= URLROOT; ?>/img/cake.jpeg" class="card-img-top object-fit-cover" alt="" style="height: 16rem;">
 <div class="card-body">
 <h3 class="card-title">Product Name</h3>
 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 </div>
 </div>
 <div class="card shadow">
-<img src="<?php echo URLROOT; ?>/img/cake.jpeg" class="card-img-top object-fit-cover" alt="" style="height: 16rem;">
+<img src="<?= URLROOT; ?>/img/cake.jpeg" class="card-img-top object-fit-cover" alt="" style="height: 16rem;">
 <div class="card-body">
 <h3 class="card-title">Product Name</h3>
 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 </div>
 </div>
 <div class="card shadow">
-<img src="<?php echo URLROOT; ?>/img/cake.jpeg" class="card-img-top object-fit-cover" alt="" style="height: 16rem;">
+<img src="<?= URLROOT; ?>/img/cake.jpeg" class="card-img-top object-fit-cover" alt="" style="height: 16rem;">
 <div class="card-body">
 <h3 class="card-title">Product Name</h3>
 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -87,7 +87,7 @@ Feature your signature desserts or seasonal creations with detailed descriptions
   <div class="row mt-4 align-items-center">
     <div class="col-4">
       <div class="card">
-        <img src="<?php echo URLROOT; ?>/img/cake.jpeg" class="img-fluid card-img-top" alt="" style="">
+        <img src="<?= URLROOT; ?>/img/cake.jpeg" class="img-fluid card-img-top" alt="" style="">
         <div class="card-body">
           <h3 class="card-title">Bento Cakes</h3>
           <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id sunt cumque earum.</p>
@@ -96,7 +96,7 @@ Feature your signature desserts or seasonal creations with detailed descriptions
     </div>
     <div class="col-4">
       <div class="card">
-        <img src="<?php echo URLROOT; ?>/img/cake.jpeg" class="img-fluid card-img-top" alt="" style="">
+        <img src="<?= URLROOT; ?>/img/cake.jpeg" class="img-fluid card-img-top" alt="" style="">
         <div class="card-body">
           <h3 class="card-title">Bento Grande</h3>
           <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id sunt cumque earum.</p>
@@ -105,7 +105,7 @@ Feature your signature desserts or seasonal creations with detailed descriptions
     </div>
     <div class="col-4">
       <div class="card">
-        <img src="<?php echo URLROOT; ?>/img/cake.jpeg" class="img-fluid card-img-top" alt="" style="">
+        <img src="<?= URLROOT; ?>/img/cake.jpeg" class="img-fluid card-img-top" alt="" style="">
         <div class="card-body">
           <h3 class="card-title">Flower Bento Box</h3>
           <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id sunt cumque earum.</p>
