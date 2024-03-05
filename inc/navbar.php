@@ -1,6 +1,6 @@
 <header class="shadow bg-primary sticky-top">
   <nav class="container navbar text-white navbar-expand-lg">
-    <a class="navbar-brand text-white" href="<?php echo URLROOT; ?>/index.php">Cake Hub</a>
+    <a class="navbar-brand text-white" href="<?= URLROOT; ?>/index.php">Cake Hub</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,22 +8,22 @@
       <!-- Displays when user is not logged in  -->
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link text-white" href="<?php echo URLROOT; ?>/menu.php"?>Menu</a>
+          <a class="nav-link text-white" href="<?= URLROOT; ?>/menu.php"?>Menu</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="<?php echo URLROOT; ?>/user/login.php"?>Log In</a>
+          <a class="nav-link text-white" href="<?= URLROOT; ?>/user/login.php"?>Log In</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="<?php echo URLROOT; ?>/user/register.php"?>Register</a>
+          <a class="nav-link text-white" href="<?= URLROOT; ?>/user/register.php"?>Register</a>
         </li>
       </ul>
       <!-- Displays when user is buyer -->
       <!-- <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/contact.php"?>Profile</a>
+          <a class="nav-link" href="<?= URLROOT; ?>/contact.php"?>Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/menu.php"?>Cart</a>
+          <a class="nav-link" href="<?= URLROOT; ?>/menu.php"?>Cart</a>
         </li>
       </ul> -->
       <!-- Displays when user is seller -->
@@ -31,10 +31,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <!-- <li class="nav-item"> -->
-        <!--   <a class="nav-link" href="<?php echo URLROOT; ?>/about.php"?>About</a> -->
+        <!--   <a class="nav-link" href="<?= URLROOT; ?>/about.php"?>About</a> -->
         <!-- </li> -->
         <!-- <li class="nav-item"> -->
-        <!--   <a class="nav-link" href="<?php echo URLROOT; ?>/contact.php"?>Contact</a> -->
+        <!--   <a class="nav-link" href="<?= URLROOT; ?>/contact.php"?>Contact</a> -->
         <!-- </li> -->
       </ul>
       <form class="d-flex">
