@@ -9,4 +9,4 @@
   <body>
     <div class="d-flex flex-column justify-content-between vh-100">
     <?php include APPROOT.'/inc/navbar.php'?>
-      <main class="container py-3 mb-5">
+      <main class="container py-3 mb-auto">
