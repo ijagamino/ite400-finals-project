@@ -1,5 +1,5 @@
 <?php
-require_once 'bootstrap.php';
+require_once '../bootstrap.php';
 include APPROOT.'/inc/header.php';
 ?>
 <!-- Content here -->
