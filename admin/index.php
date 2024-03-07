@@ -2,8 +2,7 @@
 require_once '../bootstrap.php';
 include APPROOT.'/inc/header.php';
 ?>
-<!-- Content here -->
-<div class="row mt-auto">
+<div class="row">
   <?php include APPROOT.'/inc/aside.php'; ?>
   <section class="col-6">
     <h1>Overview</h1>
@@ -25,5 +24,4 @@ include APPROOT.'/inc/header.php';
     <h2>Orders</h2>
   </section>
 </div>
-<!-- End of content -->
 <?php include APPROOT.'/inc/footer.php'; ?>

@@ -2,7 +2,6 @@
 require_once '../bootstrap.php';
 include APPROOT.'/inc/header.php';
 ?>
-<!-- Content here -->
 <div class="row">
   <?php include APPROOT.'/inc/aside.php'; ?>
   <section class="col-6 ">
@@ -39,5 +38,4 @@ include APPROOT.'/inc/header.php';
     <button class="btn btn-primary btn-lg mt-3">Save changes</button>
   </section>
 </div>
-<!-- End of content -->
 <?php include APPROOT.'/inc/footer.php'; ?>

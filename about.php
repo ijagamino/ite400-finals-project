@@ -2,12 +2,6 @@
 require_once 'bootstrap.php';
 include APPROOT.'/inc/header.php';
 ?>
-<!-- Content here -->
-<!-- ### Building Trust and Engagement
-
-#### About Us Page
-
-Share your story, introduce your team, and showcase your passion for baking. -->
 <section>
 <h1 class="display-1 text-center">About Us</h1>
 <section class="row mt-3">

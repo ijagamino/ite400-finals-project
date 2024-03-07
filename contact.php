@@ -2,20 +2,6 @@
 require_once 'bootstrap.php';
 include APPROOT.'/inc/header.php';
 ?>
-<!-- Content here -->
-<!-- ### Ordering and Contact
-
-#### Seamless Ordering System
-
-Offer online ordering with secure payment options and clear delivery/pick-up instructions.
-
-#### Contact Information
-
-Provide your address, phone number, email, and social media links.
-
-#### Consider Online Delivery
-
-Partner with a delivery service to expand your reach. -->
 <h1 class="display-1 text-center">Contact Us</h1>
 <p class="text-center">Do you have any feedback? Send a message below!</p>
 <section class="row justify-content-center">
@@ -51,5 +37,4 @@ Partner with a delivery service to expand your reach. -->
     </form>
   </div>
 </section>
-<!-- End of content -->
 <?php include APPROOT.'/inc/footer.php'; ?>

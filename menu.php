@@ -2,16 +2,6 @@
 require_once 'bootstrap.php';
 include APPROOT.'/inc/header.php';
 ?>
-<!-- Content here -->
-<!-- ### Enticing Menu Page
-
-#### Categorized Offerings
-
-Separate sections for cakes with clear descriptions and high-quality photos.
-
-#### Highlight Specialties
-
-Feature your signature desserts or seasonal creations with detailed descriptions and enticing names. -->
 <header class="">
   <h1 class="display-1 text-center">Our Menu</h1>
 </header>
@@ -55,30 +45,6 @@ Feature your signature desserts or seasonal creations with detailed descriptions
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <!-- <h2 class="col display-2">Featured Products</h2>
-<div class="card-group">
-<div class="card shadow">
-<img src="<?= URLROOT; ?>/img/cake.jpeg" class="card-img-top object-fit-cover" alt="" style="height: 16rem;">
-<div class="card-body">
-<h3 class="card-title">Product Name</h3>
-<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-</div>
-</div>
-<div class="card shadow">
-<img src="<?= URLROOT; ?>/img/cake.jpeg" class="card-img-top object-fit-cover" alt="" style="height: 16rem;">
-<div class="card-body">
-<h3 class="card-title">Product Name</h3>
-<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-</div>
-</div>
-<div class="card shadow">
-<img src="<?= URLROOT; ?>/img/cake.jpeg" class="card-img-top object-fit-cover" alt="" style="height: 16rem;">
-<div class="card-body">
-<h3 class="card-title">Product Name</h3>
-<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-</div>
-</div>
-</div> -->
 </section>
 <section class="row mt-5">
   <header class="col-12">
@@ -114,5 +80,4 @@ Feature your signature desserts or seasonal creations with detailed descriptions
     </div>
   </div>
 </section>
-<!-- End of content -->
 <?php include APPROOT.'/inc/footer.php'; ?>
