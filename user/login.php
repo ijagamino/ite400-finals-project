@@ -5,7 +5,7 @@ include APPROOT.'/inc/header.php';
 <section class="row justify-content-center">
   <div class="col-6">
     <form action="" method="POST" class="shadow card">
-     <header class="card-header">
+      <header class="card-header">
         <h1>Log In</h1>
       </header>
       <div class="card-body">
