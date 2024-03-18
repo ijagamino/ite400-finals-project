@@ -20,8 +20,9 @@ class OrderController extends Controller
         $attributes['user_id'] = $request->user()->id;
 
         $order = Order::create($attributes);
+        $cartItem = CartItem::where('user_id', $request->user()->id);
 
-        foreach ($attributes['product_id'] as $i => $value) {
+        for ($i = 0; $i < $cartItem->count(); $i++) {
             OrderDetail::create([
                 'order_id' => $order->id,
                 'product_id' => $attributes['product_id'][$i],
@@ -31,7 +32,7 @@ class OrderController extends Controller
             ]);
         }
 
-        CartItem::where('user_id', $request->user()->id)->delete();
+        $cartItem->delete();
 
         return redirect('/overview')->with('success', 'Order successful.');
     }
