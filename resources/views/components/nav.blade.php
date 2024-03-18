@@ -10,31 +10,45 @@
                 <!-- Displays when user is not logged in  -->
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/menu"?>Menu</a>
+                        <x-nav-link href="/menu">Menu</x-nav-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/about"?>About</a>
+                        <x-nav-link href="/about">About</x-nav-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/contact"?>Contact</a>
+                        <x-nav-link href="/contact">Contact</x-nav-link>
                     </li>
                 </ul>
-                <form class="d-flex mx-auto" role="search">
-                    <input type="search" class="form-control me-2" placeholder="Search">
+                <form method="GET" action="/results" class="d-flex mx-auto" role="search">
+                    <input type="search" name="search" class="form-control me-2" placeholder="Search">
                     <button class="btn btn-dark">Search</button>
                 </form>
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <!-- If not logged, show this -->
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/login"?>Log In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/register"?>Register</a>
-                    </li>
-                    <!-- If logged, show this -->
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/profile"?>Profile</a>
-                    </li>
+                    @auth
+                        @if (!auth()->user()->admin)
+                            <li class="nav-item">
+                                <x-nav-link href="/cart">Cart</x-nav-link>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <x-nav-link href="/admin">Dashboard</x-nav-link>
+                            </li>
+                        @endif
+                        <li class="nav-item">
+                            <x-nav-link href="/overview">{{ auth()->user()->first_name }}</x-nav-link>
+                        </li>
+                        <form method="POST" action="/logout">
+                            @csrf
+                            <button class="nav-link text-white">Log Out</button>
+                        </form>
+                    @else
+                        <li class="nav-item">
+                            <x-nav-link href="/login">Log In</x-nav-link>
+                        </li>
+                        <li class="nav-item">
+                            <x-nav-link href="/register">Register</x-nav-link>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>
