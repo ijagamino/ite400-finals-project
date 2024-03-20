@@ -11,7 +11,6 @@ class OrderDetail extends Pivot
         'order_id',
         'product_id',
         'flavor_id',
-        'layers',
         'quantity',
     ];
 

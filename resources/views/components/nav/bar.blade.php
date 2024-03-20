@@ -10,13 +10,13 @@
                 <!-- Displays when user is not logged in  -->
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <x-nav-link href="/menu">Menu</x-nav-link>
+                        <x-nav.link href="/menu">Menu</x-nav.link>
                     </li>
                     <li class="nav-item">
-                        <x-nav-link href="/about">About</x-nav-link>
+                        <x-nav.link href="/about">About</x-nav.link>
                     </li>
                     <li class="nav-item">
-                        <x-nav-link href="/contact">Contact</x-nav-link>
+                        <x-nav.link href="/contact">Contact</x-nav.link>
                     </li>
                 </ul>
                 <form method="GET" action="/results" class="d-flex mx-auto" role="search">
@@ -25,17 +25,17 @@
                 </form>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     @auth
-                        @if (!auth()->user()->admin)
+                        @if (auth()->user()->admin)
                             <li class="nav-item">
-                                <x-nav-link href="/cart">Cart</x-nav-link>
+                                <x-nav.link href="/admin">Dashboard</x-nav.link>
                             </li>
                         @else
                             <li class="nav-item">
-                                <x-nav-link href="/admin">Dashboard</x-nav-link>
+                                <x-nav.link href="/cart">Cart</x-nav.link>
                             </li>
                         @endif
                         <li class="nav-item">
-                            <x-nav-link href="/overview">{{ auth()->user()->first_name }}</x-nav-link>
+                            <x-nav.link href="/overview">{{ auth()->user()->first_name }}</x-nav.link>
                         </li>
                         <form method="POST" action="/logout">
                             @csrf
@@ -43,10 +43,10 @@
                         </form>
                     @else
                         <li class="nav-item">
-                            <x-nav-link href="/login">Log In</x-nav-link>
+                            <x-nav.link href="/login">Log In</x-nav.link>
                         </li>
                         <li class="nav-item">
-                            <x-nav-link href="/register">Register</x-nav-link>
+                            <x-nav.link href="/register">Register</x-nav.link>
                         </li>
                     @endauth
                 </ul>

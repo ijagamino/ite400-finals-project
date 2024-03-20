@@ -14,25 +14,24 @@
                         src='{{ asset("/storage/{$product->thumbnail}") }}' alt="">
                 </div>
                 <div class="col">
-                    <form method="POST" action="/cart">
+                    <form method="POST" action="/cart" name="{{ $product->slug }}">
                         @csrf
                         <input type="number" name="product_id" hidden value="{{ $product->id }}">
                         <div>
-                            <x-form-select name="flavor_id" label="flavor" type="number">
+                            <x-form.select name="flavor_id" label="flavor" type="number">
                                 @foreach ($flavors as $id => $name)
                                     <option value="{{ $id }}">{{ $name }}</option>
                                 @endforeach
-                            </x-form-select>
+                            </x-form.select>
                         </div>
                         <div class="mt-3">
-                            <x-form-select name="layers" classes="mt-3">
-                                <option value="1">One (1)</option>
-                                <option value="2">Two (2)</option>
-                                <option value="3">Three (3)</option>
-                            </x-form-select>
-                        </div>
-                        <div class="mt-3">
-                            <x-form-input name="quantity" type="number" required />
+                            <x-form.input name="quantity" type="number" required
+
+                                oninput="{
+                                var qty = document.forms['{{ $product->slug }}']['quantity'].value;
+                                var price = {{ $product->price }};
+                                document.querySelector('p#{{ $product->slug }}').innerHTML= 'Total price: &#8369;' + qty
+                                * price; }" />
                         </div>
 
                         <div class="modal-footer">
@@ -42,8 +41,8 @@
 
                     </form>
                 </div>
-                <?php $quantity = 1; ?>
-                <p class="col text-end">Total price: &#8369;{{ $quantity * $product->price }}</p>
+                <p class="col text-end" id="{{ $product->slug }}">Total price: &#8369;{{ $product->price }}
+                </p>
             </div>
         </div>
     </div>

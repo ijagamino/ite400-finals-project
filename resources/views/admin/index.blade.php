@@ -1,41 +1,33 @@
-<x-admin.layout>
+<x-user.layout>
     <x-page-header>Dashboard</x-page-header>
     <div class="row gy-5">
         <div class="col-lg-6 col-12">
-            <a href="/admin/products">
-                <div class="card card-body">
-                    <h2 class="card-title">Products</h2>
-                    <p class="card-text">total products: {{ $products->count() }}</p>
-                </div>
-            </a>
+            <x-dashboard.panel href="/admin/products">
+                <h2 class="card-title">Products</h2>
+                <p class="card-text">Total products: {{ $products->count() }}</p>
+            </x-dashboard.panel>
         </div>
         <div class="col-lg-6 col-12">
-            <a href="/admin/flavors">
-                <div class="card card-body">
-                    <h2 class="card-title">Flavors</h2>
-                    <p class="card-text">Total flavors: {{ $flavors->count() }}</p>
-                </div>
-            </a>
+            <x-dashboard.panel href="/admin/flavors">
+                <h2 class="card-title">Flavors</h2>
+                <p class="card-text">Total flavors: {{ $flavors->count() }}</p>
+            </x-dashboard.panel>
         </div>
         <div class="col-12">
-            <a href="/admin/orders">
-                <div class="card card-body">
-                    <h2 class="card-title">Orders</h2>
-                    <p class="card-text">Total orders: {{ $orders->count() }}</p>
-                    <p class="card-text">Total completed orders: {{ $orders->where('status', 'complete')->count() }}
-                    </p>
-                </div>
-            </a>
-        </div>
-        <div class="col-12">
-            <a href="/admin/products">
-                <div class="card card-body">
-                    <h2 class="card-title">Pending Orders</h2>
+            <x-dashboard.panel href="/admin/orders">
+                <h2 class="card-title">Orders</h2>
+                <p class="card-text">Total orders: {{ $orders->count() }}</p>
+                @if ($orders->where('status', 'pending')->count())
                     <p class="card-text">Total pending orders: {{ $orders->where('status', 'pending')->count() }}
-                    </p>
-                </div>
-            </a>
+                @endif
+                @if ($orders->where('status', 'ongoing')->count())
+                    <p class="card-text">Total ongoing orders: {{ $orders->where('status', 'ongoing')->count() }}
+                @endif
+                @if ($orders->where('status', 'complete')->count())
+                    <p class="card-text">Total completed orders: {{ $orders->where('status', 'complete')->count() }}
+                @endif
+            </x-dashboard.panel>
         </div>
     </div>
-</x-admin.layout>
+</x-user.layout>
 

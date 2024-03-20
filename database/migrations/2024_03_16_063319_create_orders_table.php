@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
             $table->string('slug')->unique();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('status')->default('pending');
             $table->timestamps();
         });

@@ -27,7 +27,7 @@ class AdminFlavorController extends Controller
 
         Flavor::create($attributes);
 
-        return redirect('/admin')->with('success', 'Flavor added successfully.');
+        return redirect('/admin')->with('success', 'Flavor added successfully');
     }
 
     public function edit(Flavor $flavor)

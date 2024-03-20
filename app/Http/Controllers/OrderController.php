@@ -10,11 +10,6 @@ use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
-    public function index()
-    {
-
-    }
-
     public function store(Request $request)
     {
         $user = $request->user();
@@ -34,20 +29,27 @@ class OrderController extends Controller
                 'order_id' => $order->id,
                 'product_id' => $attributes['product_id'][$i],
                 'flavor_id' => $attributes['flavor_id'][$i],
-                'layers' => $attributes['layers'][$i],
                 'quantity' => $attributes['quantity'][$i],
             ]);
         }
 
         $cartItems->delete();
 
-        return redirect('/orders/'.$order->slug)->with('success', 'Order placed.');
+        return redirect('/orders/'.$order->slug)->with('success', 'Order placed');
     }
 
     public function show(Order $order)
     {
         return view('orders.show', [
+            'order' => $order,
             'orderDetails' => $order->orderDetails,
         ]);
+    }
+
+    public function update(Order $order)
+    {
+        $order->update(['status' => 'complete']);
+
+        return redirect('/overview')->with('success', 'Your order has been received');
     }
 }

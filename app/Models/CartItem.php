@@ -11,13 +11,12 @@ class CartItem extends Pivot
         'user_id',
         'product_id',
         'flavor_id',
-        'layers',
         'quantity',
     ];
 
-    public function order(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(User::class);
     }
 
     public function product(): BelongsTo

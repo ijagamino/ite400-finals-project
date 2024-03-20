@@ -1,6 +1,6 @@
 @props(['product'])
 
-<div class="col">
+<div class="col-lg-4 col-12">
     <div type="button" class="card" data-bs-toggle="modal" data-bs-target="#{{ $product->slug }}">
         <img class="card-img-top object-fit-cover" style="height: 20rem"
             src='{{ asset("/storage/{$product->thumbnail}") }}' alt="">

@@ -1,24 +1,37 @@
-<x-layout>
-    <div class="row justify-content-center">
-        <x-page-header>My Cart</x-page-header>
-        <section class="col-6 mt-3">
-            @foreach ($cartItems as $cartItem)
-                @if ($cartItem->quantity > 0)
-                    <x-cart.product.card-horizontal :item="$cartItem">
-                    </x-cart.product.card-horizontal>
-                @endif
-            @endforeach
-            <form method="POST" action="/orders">
-                @csrf
+@php
+    $totalPrice = 0;
+@endphp
+<x-user.layout>
+    <x-page-header>My Cart</x-page-header>
+    @if (!$cartItems->count())
+        <p class="lead text-center">There are no items in your cart.</p>
+    @else
+        <section class="card shadow">
+            <div class="card-body">
+                <p hidden class="_getme" id="_getme"></p>
                 @foreach ($cartItems as $cartItem)
-                    <input hidden name="product_id[]" type="text" value="{{ $cartItem->product->id }}" required>
-                    <input hidden name="flavor_id[]" type="text" value="{{ $cartItem->flavor->id }}" required>
-                    <input hidden name="layers[]" type="text" value="{{ $cartItem->layers }}" required>
-                    <input hidden name="quantity[]" type="text" value="{{ $cartItem->quantity }}" required>
+                    <x-cart.card-horizontal :item="$cartItem" />
+                    <x-cart.modal :cartItem="$cartItem" :product="$cartItem->product" :flavor="$cartItem->flavor" :flavors="$flavors" />
+
+                    @php
+                        $totalItemPrice = $cartItem->quantity * $cartItem->product->price;
+                        $totalPrice += $totalItemPrice;
+                    @endphp
                 @endforeach
-                <button class="btn btn-primary btn-lg mt-3">Checkout</button>
-            </form>
+                <form method="POST" action="/orders">
+                    @csrf
+                    @foreach ($cartItems as $cartItem)
+                        <input hidden name="product_id[]" type="text" value="{{ $cartItem->product->id }}" required>
+                        <input hidden name="flavor_id[]" type="text" value="{{ $cartItem->flavor->id }}" required>
+                        <input hidden name="quantity[]" type="text" value="{{ $cartItem->quantity }}" required>
+                    @endforeach
+                    <div class="d-flex flex-column mt-3 align-items-center">
+                        <h2>&#8369;{{ $totalPrice }}</h2>
+                        <button class="btn btn-lg btn-primary">Checkout</button>
+                    </div>
+                </form>
+            </div>
         </section>
-    </div>
-</x-layout>
+    @endif
+</x-user.layout>
 

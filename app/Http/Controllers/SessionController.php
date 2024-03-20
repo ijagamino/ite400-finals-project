@@ -22,7 +22,7 @@ class SessionController extends Controller
     {
         auth()->logout();
 
-        return redirect('/')->with('success', 'You have successfully logged out.');
+        return redirect('/')->with('success', 'You have successfully logged out');
     }
 
     public function edit(Request $request)
@@ -78,7 +78,6 @@ class SessionController extends Controller
 
         if (! auth()->user()->admin) {
             return redirect('/overview')->with('success', 'You have successfully logged in');
-
         }
 
         return redirect('/admin')->with('success', 'You have successfully logged in');

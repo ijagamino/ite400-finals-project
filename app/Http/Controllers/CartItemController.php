@@ -16,6 +16,7 @@ class CartItemController extends Controller
         $user = $request->user();
 
         return view('cart.index', [
+            'flavors' => Flavor::get()->pluck('name', 'id'),
             'cartItems' => $user->cartItems,
         ]);
     }
@@ -25,60 +26,111 @@ class CartItemController extends Controller
 
         $user = $request->user();
         $attributes = $request->all();
-
         $attributes['user_id'] = $user->id;
-
         $attributes['price'] = Product::where('id', request('product_id'))->first()->price;
 
         $validator = Validator::make($attributes, [
             'user_id' => [
                 'required',
-                Rule::unique('cart_item')->where('product_id', $attributes['product_id'])->where('flavor_id', $attributes['flavor_id'])->where('layers', $attributes['layers']),
+                Rule::unique('cart_item')->where('product_id', $attributes['product_id'])->where('flavor_id', $attributes['flavor_id']),
             ],
             'product_id' => [
                 'required',
-                Rule::unique('cart_item')->where('user_id', $attributes['user_id'])->where('flavor_id', $attributes['flavor_id'])->where('layers', $attributes['layers']),
+                Rule::unique('cart_item')->where('user_id', $attributes['user_id'])->where('flavor_id', $attributes['flavor_id']),
             ],
             'flavor_id' => [
                 'required',
-                Rule::unique('cart_item')->where('user_id', $attributes['user_id'])->where('product_id', $attributes['product_id'])->where('layers', $attributes['layers']),
+                Rule::unique('cart_item')->where('user_id', $attributes['user_id'])->where('product_id', $attributes['product_id']),
             ],
-            'layers' => ['required',
-                Rule::unique('cart_item')->where('user_id', $attributes['user_id'])->where('product_id', $attributes['product_id'])->where('flavor_id', $attributes['flavor_id']),
+            'quantity' => [
+                'required',
             ],
-            'quantity' => ['required'],
         ]);
 
         if ($validator->fails()) {
-            return redirect('menu')->with('fail', 'You already have that item in your cart.')
+            return redirect('menu')->with('fail', 'You already have that item in your cart')
                 ->withErrors($validator)
                 ->withInput();
         }
 
         CartItem::create($attributes);
 
-        return redirect('menu')->with('success', 'Product added to cart.');
+        return redirect('menu')->with('success', 'Product added to cart');
 
     }
 
-    public function destroy(Product $product, Flavor $flavor)
+    public function update(Request $request, Product $product, Flavor $flavor)
     {
-        CartItem::join('flavors', 'cart_item.flavor_id', 'flavors.id')->join('products', 'cart_item.product_id', 'products.id')->select('cart_item.*', 'flavors.slug as flavor_slug', 'products.slug as product_slug')->where('products.slug', $product->slug)->where('flavors.slug', $flavor->slug)->delete();
+        $user = $request->user();
+        $cartItem = $user->cartItems()->whereBelongsTo($product)->whereBelongsTo($flavor)->first();
 
-        return back()->with('success', 'Product deleted');
+        $attributes = $request->except(['_token', '_method']);
+        $attributes['user_id'] = $user->id;
+
+        $validator = Validator::make($attributes, [
+            'product_id' => [
+                'required',
+                Rule::unique('cart_item')->where('user_id', $user->id)->where('flavor_id', $flavor->id)->ignore($cartItem->id),
+            ],
+            'flavor_id' => [
+                'required',
+                Rule::unique('cart_item')->where('user_id', $user->id)->where('product_id', $product->id)->ignore($cartItem->id),
+            ],
+            'quantity' => [
+                'required',
+            ],
+        ]);
+
+        if ($validator->fails()) {
+            return back()->with('fail', 'You already have that item in your cart')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $cartItem = $user->cartItems()->whereBelongsTo($product)->whereBelongsTo($flavor);
+
+        $cartItem->update($attributes);
+
+        return back()->with('success', 'Item updated');
     }
 
-    public function add(Product $product, Flavor $flavor)
+    public function destroy(Request $request, Product $product, Flavor $flavor)
     {
-        CartItem::where('product_id', $product->id)->where('flavor_id', $flavor->id)->increment('quantity');
+        $user = $request->user();
 
-        return back()->with('success', 'Quantity added.');
+        $cartItem = $user->cartItems()->whereBelongsTo($product)->whereBelongsTo($flavor);
+
+        $cartItem->delete();
+
+        return back()->with('success', 'Item removed from cart');
     }
 
-    public function subtract(Product $product, Flavor $flavor)
+    public function add(Request $request, Product $product, Flavor $flavor)
     {
-        CartItem::join('flavors', 'cart_item.flavor_id', 'flavors.id')->join('products', 'cart_item.product_id', 'products.id')->select('cart_item.*', 'flavors.slug as flavor_slug', 'products.slug as product_slug')->where('products.slug', $product->slug)->where('flavors.slug', $flavor->slug)->decrement('quantity');
+        $user = $request->user();
 
-        return back()->with('success', 'Quantity subtracted.');
+        $cartItem = $user->cartItems()->whereBelongsTo($product)->whereBelongsTo($flavor);
+
+        $cartItem->increment('quantity');
+
+        return back()->with('success', 'Item quantity added');
+    }
+
+    public function subtract(Request $request, Product $product, Flavor $flavor)
+    {
+        $user = $request->user();
+
+        $cartItem = $user->cartItems()->whereBelongsTo($product)->whereBelongsTo($flavor);
+
+        if ($cartItem->first()->quantity == 1) {
+            $cartItem->delete();
+
+            return back()->with('success', 'Item removed from cart');
+        }
+
+        $cartItem->decrement('quantity');
+
+        return back()->with('success', 'Item quantity subtracted');
+
     }
 }

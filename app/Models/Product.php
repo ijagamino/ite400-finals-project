@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -42,14 +43,14 @@ class Product extends Model
         );
     }
 
-    public function cartItems(): BelongsToMany
+    public function cartItems(): HasMany
     {
-        return $this->belongsToMany(CartItem::class, 'cart_item');
+        return $this->hasMany(CartItem::class);
     }
 
-    public function orderDetails(): BelongsToMany
+    public function orderDetails(): HasMany
     {
-        return $this->belongsToMany(OrderDetail::class, 'cart_item');
+        return $this->hasMany(OrderDetail::class);
     }
 
     public function flavors(): BelongsToMany

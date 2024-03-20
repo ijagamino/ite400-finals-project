@@ -22,6 +22,6 @@ class ContactController extends Controller
 
         Contact::create($attributes);
 
-        return redirect('/contact')->with('success', 'You have submitted a message.');
+        return redirect('/contact')->with('success', 'You have submitted a message');
     }
 }

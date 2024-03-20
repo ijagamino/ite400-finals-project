@@ -32,6 +32,6 @@ class RegisterController extends Controller
 
         auth()->attempt($attributes);
 
-        return redirect('/overview')->with('success', 'Your account has been created.');
+        return redirect('/overview')->with('success', 'Your account has been created');
     }
 }

@@ -12,7 +12,7 @@
 
 <body>
     <div class="d-flex flex-column justify-content-between vh-100">
-        <x-nav />
+        <x-nav.bar />
         <main class="container py-3 mb-auto">
             {{ $slot }}
         </main>
@@ -24,6 +24,7 @@
     </div>
 
     <x-flash />
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

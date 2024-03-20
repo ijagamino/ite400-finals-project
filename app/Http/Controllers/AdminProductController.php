@@ -34,7 +34,7 @@ class AdminProductController extends Controller
 
         Product::create($attributes);
 
-        return redirect('/admin')->with('success', 'Product added successfully.');
+        return redirect('/admin')->with('success', 'Product added successfully');
     }
 
     public function edit(Product $product)

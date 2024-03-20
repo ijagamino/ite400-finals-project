@@ -1,16 +1,12 @@
-<x-admin.layout>
-    <section class="row justify-content-center">
-        <x-page-header>Add a new flavor</x-page-header>
-        <x-admin.aside></x-admin.aside>
-        <div class="col-lg">
-            <form method="POST" action="/admin/flavors" enctype="multipart/form-data">
-                @csrf
-
-                <x-form-input name="name" />
-
-                <button class="btn btn-primary btn-lg">Add new flavor</button>
-            </form>
-        </div>
+<x-user.layout>
+    <x-page-header>Add a new flavor</x-page-header>
+    <section>
+        <x-form.card action="/admin/flavors">
+            <div class="card-body">
+                <x-form.input name="name" />
+                <x-form.button>Add new flavor</x-form.button>
+            </div>
+        </x-form.card>
     </section>
-</x-admin.layout>
+</x-user.layout>
 
