@@ -18,7 +18,7 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-end">
                     <div>
-                        <p class="mb-0">&#8369;{{ $item->product->price . ' x' . $item->quantity }}
+                        <p class="lead mb-0">&#8369;{{ $item->product->price . ' x' . $item->quantity }}
                     </div>
                     <h2 class="mb-0">&#8369;{{ $item->quantity * $item->product->price }}
                 </div>

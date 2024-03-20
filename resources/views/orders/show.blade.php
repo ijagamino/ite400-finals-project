@@ -1,6 +1,6 @@
 <x-user.layout>
     <x-page-header>Order Details</x-page-header>
-    <p class="lead text-center">Order details for {{ $order->slug }}</p>
+    <p class="lead text-center">Order details for order ID#{{ $order->slug }}</p>
     <section class="card shadow">
         <div class="card-body">
 
@@ -10,7 +10,6 @@
             @foreach ($orderDetails as $orderDetail)
                 <x-product.card-horizontal :item="$orderDetail">
                 </x-product.card-horizontal>
-
 
                 @php
                     $totalPrice += $orderDetail->quantity * $orderDetail->product->price;
