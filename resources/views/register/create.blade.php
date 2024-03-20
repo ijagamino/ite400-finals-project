@@ -22,9 +22,6 @@
                                 <x-form-input-floating name="first_name" />
                             </div>
                             <div class="col">
-                                <x-form-input-floating name="middle_name" />
-                            </div>
-                            <div class="col">
                                 <x-form-input-floating name="last_name" />
                             </div>
                         </div>

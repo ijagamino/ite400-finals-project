@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('first_name');
-            $table->string('middle_name');
             $table->string('last_name');
             $table->string('street');
             $table->string('barangay');
             $table->string('city');
+            $table->string('landmark')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('mobile_number');

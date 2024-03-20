@@ -2,36 +2,56 @@
     <div class="row">
         <x-aside />
         <section class="col-8">
-            <form action="">
-                <x-page-header>Profile Information</x-page-header>
+            <x-page-header>Profile Information</x-page-header>
+            <form method="POST" action="/profile">
+                @csrf
+                @method('PATCH')
+
                 <fieldset disabled>
+                    <legend>Account Information</legend>
                     <div class="row">
                         <div class="col">
-                            <x-form-input name="first_name" />
+                            <x-form-input name="username" />
                         </div>
                         <div class="col">
-                            <x-form-input name="middle_name" />
-                        </div>
-                        <div class="col">
-                            <x-form-input name="last_name" />
+                            <x-form-input name="email" />
                         </div>
                     </div>
-                    <x-form-input name="email" />
                 </fieldset>
-                <div class="row">
-                    <div class="col">
-                        <x-form-input name="street" />
+                <fieldset class="mt-3" disabled>
+                    <legend>Personal Information</legend>
+                    <div class="row">
+                        <div class="col">
+                            <x-form-input name="first_name" label="First Name" />
+                        </div>
+                        <div class="col">
+                            <x-form-input name="last_name" label="Last Name" />
+                        </div>
                     </div>
-                    <div class="col">
-                        <x-form-input name="barangay" />
+                </fieldset>
+                <fieldset class="mt-3">
+                    <legend>Address Information</legend>
+                    <div class="row">
+                        <div class="col-4">
+                            <x-form-input name="street" />
+                        </div>
+                        <div class="col-4">
+                            <x-form-input name="barangay" />
+                        </div>
+                        <div class="col-4">
+                            <x-form-input name="city" />
+                        </div>
+                        <div class="col">
+                            <x-form-input name="landmark" />
+                        </div>
                     </div>
-                    <div class="col">
-                        <x-form-input name="city" />
-                    </div>
-                </div>
-                <x-form-input name="mobile_number" />
+                </fieldset>
+                <fieldset class="mt-3">
+                    <legend>Contact Information</legend>
+                    <x-form-input name="mobile_number" label="Mobile Number" />
+                </fieldset>
+                <button class="btn btn-primary btn-lg mt-3">Save changes</button>
             </form>
-            <button class="btn btn-primary btn-lg mt-3">Save changes</button>
         </section>
     </div>
 </x-layout>

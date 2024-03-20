@@ -1,4 +1,4 @@
-@props(['product'])
+@props(['product', 'flavors'])
 
 <div class="modal fade" id="{{ $product->slug }}">
     <div class="modal-dialog">
@@ -18,14 +18,14 @@
                         @csrf
                         <input type="number" name="product_id" hidden value="{{ $product->id }}">
                         <div>
-                            <x-form-select name="flavor_id">
-                                @foreach (\App\Models\Flavor::all() as $flavor)
-                                    <option value="{{ $flavor->id }}">{{ ucwords($flavor->name) }}</option>
+                            <x-form-select name="flavor_id" label="flavor" type="number">
+                                @foreach ($flavors as $id => $name)
+                                    <option value="{{ $id }}">{{ $name }}</option>
                                 @endforeach
                             </x-form-select>
                         </div>
                         <div class="mt-3">
-                            <x-form-select name="layer" classes="mt-3">
+                            <x-form-select name="layers" classes="mt-3">
                                 <option value="1">One (1)</option>
                                 <option value="2">Two (2)</option>
                                 <option value="3">Three (3)</option>

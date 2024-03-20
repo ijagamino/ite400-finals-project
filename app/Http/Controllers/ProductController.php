@@ -12,7 +12,7 @@ class ProductController extends Controller
     {
         return view('products.index', [
             'products' => Product::all(),
-            'flavors' => Flavor::all(),
+            'flavors' => Flavor::get()->pluck('name', 'id'),
         ]);
     }
 

@@ -11,39 +11,41 @@ use Illuminate\Validation\Rule;
 
 class CartItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $user = $request->user();
+
         return view('cart.index', [
-            'cartItems' => CartItem::join('flavors', 'cart_item.flavor_id', 'flavors.id')
-                ->join('products', 'cart_item.product_id', 'products.id')
-                ->where('user_id', auth()->user()->id)
-                ->select('cart_item.*', 'products.thumbnail', 'products.slug as product_slug', 'flavors.slug as flavor_slug', 'products.name as product_name', 'flavors.name as flavor_name')
-                ->get(),
+            'cartItems' => $user->cartItems,
         ]);
     }
 
     public function store(Request $request)
     {
 
+        $user = $request->user();
         $attributes = $request->all();
 
-        $attributes['user_id'] = $request->user()->id;
+        $attributes['user_id'] = $user->id;
+
         $attributes['price'] = Product::where('id', request('product_id'))->first()->price;
 
         $validator = Validator::make($attributes, [
             'user_id' => [
                 'required',
-                Rule::unique('cart_item')->where('product_id', $attributes['product_id'])->where('flavor_id', $attributes['flavor_id']),
+                Rule::unique('cart_item')->where('product_id', $attributes['product_id'])->where('flavor_id', $attributes['flavor_id'])->where('layers', $attributes['layers']),
             ],
             'product_id' => [
                 'required',
-                Rule::unique('cart_item')->where('user_id', $attributes['user_id'])->where('flavor_id', $attributes['flavor_id']),
+                Rule::unique('cart_item')->where('user_id', $attributes['user_id'])->where('flavor_id', $attributes['flavor_id'])->where('layers', $attributes['layers']),
             ],
             'flavor_id' => [
                 'required',
-                Rule::unique('cart_item')->where('user_id', $attributes['user_id'])->where('product_id', $attributes['product_id']),
+                Rule::unique('cart_item')->where('user_id', $attributes['user_id'])->where('product_id', $attributes['product_id'])->where('layers', $attributes['layers']),
             ],
-            'layer' => ['required'],
+            'layers' => ['required',
+                Rule::unique('cart_item')->where('user_id', $attributes['user_id'])->where('product_id', $attributes['product_id'])->where('flavor_id', $attributes['flavor_id']),
+            ],
             'quantity' => ['required'],
         ]);
 
@@ -59,6 +61,13 @@ class CartItemController extends Controller
 
     }
 
+    public function destroy(Product $product, Flavor $flavor)
+    {
+        CartItem::join('flavors', 'cart_item.flavor_id', 'flavors.id')->join('products', 'cart_item.product_id', 'products.id')->select('cart_item.*', 'flavors.slug as flavor_slug', 'products.slug as product_slug')->where('products.slug', $product->slug)->where('flavors.slug', $flavor->slug)->delete();
+
+        return back()->with('success', 'Product deleted');
+    }
+
     public function add(Product $product, Flavor $flavor)
     {
         CartItem::where('product_id', $product->id)->where('flavor_id', $flavor->id)->increment('quantity');
@@ -71,12 +80,5 @@ class CartItemController extends Controller
         CartItem::join('flavors', 'cart_item.flavor_id', 'flavors.id')->join('products', 'cart_item.product_id', 'products.id')->select('cart_item.*', 'flavors.slug as flavor_slug', 'products.slug as product_slug')->where('products.slug', $product->slug)->where('flavors.slug', $flavor->slug)->decrement('quantity');
 
         return back()->with('success', 'Quantity subtracted.');
-    }
-
-    public function destroy(Product $product, Flavor $flavor)
-    {
-        CartItem::join('flavors', 'cart_item.flavor_id', 'flavors.id')->join('products', 'cart_item.product_id', 'products.id')->select('cart_item.*', 'flavors.slug as flavor_slug', 'products.slug as product_slug')->where('products.slug', $product->slug)->where('flavors.slug', $flavor->slug)->delete();
-
-        return back()->with('success', 'Product deleted');
     }
 }

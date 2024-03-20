@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -10,9 +11,15 @@ class Flavor extends Model
 {
     use HasFactory;
 
-    public function getNameAttribute($name)
+    protected $fillable = [
+        'name',
+    ];
+
+    public function name(): Attribute
     {
-        return ucwords(strtolower($name));
+        return Attribute::make(
+            get: fn (string $value) => ucwords(strtolower($value)),
+        );
     }
 
     public function cartItems(): BelongsToMany

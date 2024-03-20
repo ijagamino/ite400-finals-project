@@ -1,4 +1,4 @@
-<x-layout>
+<x-admin.layout>
     <x-page-header>Edit product</x-page-header>
     <section>
         <form method="POST" action="/admin/products/{{ $product->slug }}" enctype="multipart/form-data">
@@ -20,5 +20,5 @@
             </div>
         </form>
     </section>
-</x-layout>
+</x-admin.layout>
 

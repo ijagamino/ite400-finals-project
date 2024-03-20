@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('order_detail', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained();
-            $table->foreignId('product_id')->constrained();
-            $table->foreignId('flavor_id')->constrained();
-            $table->integer('layer');
+            $table->foreignId('product_id');
+            $table->foreignId('flavor_id');
+            $table->integer('layers');
             $table->integer('quantity');
             $table->timestamps();
-            $table->unique(['order_id', 'product_id', 'flavor_id']);
+            $table->unique(['order_id', 'product_id', 'flavor_id', 'layers']);
         });
     }
 

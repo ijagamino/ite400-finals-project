@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class OrderDetail extends Pivot
@@ -11,22 +11,22 @@ class OrderDetail extends Pivot
         'order_id',
         'product_id',
         'flavor_id',
-        'layer',
+        'layers',
         'quantity',
     ];
 
-    public function users(): HasMany
+    public function order(): BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(Order::class);
     }
 
-    public function products(): HasMany
+    public function product(): BelongsTo
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 
-    public function flavors(): HasMany
+    public function flavor(): BelongsTo
     {
-        return $this->hasMany(Flavor::class);
+        return $this->belongsTo(Flavor::class);
     }
 }

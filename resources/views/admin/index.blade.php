@@ -1,6 +1,6 @@
-<x-layout>
+<x-admin.layout>
     <x-page-header>Dashboard</x-page-header>
-    <section class="row gy-5">
+    <div class="row gy-5">
         <div class="col-lg-6 col-12">
             <a href="/admin/products">
                 <div class="card card-body">
@@ -22,7 +22,8 @@
                 <div class="card card-body">
                     <h2 class="card-title">Orders</h2>
                     <p class="card-text">Total orders: {{ $orders->count() }}</p>
-                    <p class="card-text">Total completed orders: {{ $orders->where('status', 'complete')->count() }}</p>
+                    <p class="card-text">Total completed orders: {{ $orders->where('status', 'complete')->count() }}
+                    </p>
                 </div>
             </a>
         </div>
@@ -30,9 +31,11 @@
             <a href="/admin/products">
                 <div class="card card-body">
                     <h2 class="card-title">Pending Orders</h2>
-                    <p class="card-text">Total pending orders: {{ $orders->where('status', 'pending')->count() }}</p>
+                    <p class="card-text">Total pending orders: {{ $orders->where('status', 'pending')->count() }}
+                    </p>
                 </div>
             </a>
-    </section>
-</x-layout>
+        </div>
+    </div>
+</x-admin.layout>
 

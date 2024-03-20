@@ -1,4 +1,4 @@
-<x-layout>
+<x-admin.layout>
     <x-page-header>Add a new product</x-page-header>
     <section>
         <form method="POST" action="/admin/products" enctype="multipart/form-data">
@@ -12,5 +12,5 @@
             <button>Add new product</button>
         </form>
     </section>
-</x-layout>
+</x-admin.layout>
 

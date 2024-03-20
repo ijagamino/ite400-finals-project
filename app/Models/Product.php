@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -34,9 +35,11 @@ class Product extends Model
         $query->when($filters['search'] ?? false, fn ($query, $search) => $query->where('name', 'like', '%'.$search.'%'));
     }
 
-    public function getNameAttribute($name)
+    public function name(): Attribute
     {
-        return ucwords(strtolower($name));
+        return Attribute::make(
+            get: fn (string $value) => ucwords(strtolower($value)),
+        );
     }
 
     public function cartItems(): BelongsToMany

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Flavor;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class AdminProductController extends Controller
 {
@@ -15,6 +16,27 @@ class AdminProductController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('admin.products.create');
+    }
+
+    public function store(Request $request)
+    {
+        $attributes = $request->validate([
+            'thumbnail' => ['required', 'image'],
+            'name' => ['required', 'max:255'],
+            'description' => ['required'],
+            'price' => ['required'],
+        ]);
+
+        $attributes['thumbnail'] = $request->file('thumbnail')->store('thumbnails');
+
+        Product::create($attributes);
+
+        return redirect('/admin')->with('success', 'Product added successfully.');
+    }
+
     public function edit(Product $product)
     {
         return view('admin.products.edit', [
@@ -22,11 +44,11 @@ class AdminProductController extends Controller
         ]);
     }
 
-    public function update(Product $product)
+    public function update(Request $request, Product $product)
     {
-        $attributes = request()->validate([
+        $attributes = $request->validate([
             'thumbnail' => ['image'],
-            'name' => ['required'],
+            'name' => ['required', 'max:255'],
             'description' => ['required'],
             'price' => ['required'],
         ]);
@@ -37,7 +59,7 @@ class AdminProductController extends Controller
 
         $product->update($attributes);
 
-        return back()->with('success', 'Product updated');
+        return redirect('admin/products')->with('success', 'Product updated');
     }
 
     public function destroy(Product $product)
@@ -45,26 +67,5 @@ class AdminProductController extends Controller
         $product->delete();
 
         return back()->with('success', 'Product deleted');
-    }
-
-    public function create()
-    {
-        return view('admin.products.create');
-    }
-
-    public function store()
-    {
-        $attributes = request()->validate([
-            'thumbnail' => ['required', 'image'],
-            'name' => ['required'],
-            'description' => ['required'],
-            'price' => ['required'],
-        ]);
-
-        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-
-        Product::create($attributes);
-
-        return redirect('/admin')->with('success', 'Product added successfully.');
     }
 }
