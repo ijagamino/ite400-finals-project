@@ -29,24 +29,28 @@
                     @php
                         $totalPrice = 0;
                     @endphp
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <a class="card card-body nav-link" href="/orders/{{ $order->slug }}">
                             <h3 class="text-body-secondary">
                                 {{ $order->orderDetails->first()->product->name . ' ' . $order->orderDetails->first()->flavor->name }}
-                                </h4>
-                                @if ($order->orderDetails->count() > 1)
-                                    <p class="lead">...and {{ $order->orderDetails->count() - 1 }} other item/s</p>
-                                @endif
-                                @foreach ($order->orderDetails as $orderDetail)
+                            </h3>
+                            @if ($order->orderDetails->count() > 1)
+                                <p class="lead">...and {{ $order->orderDetails->count() - 1 }} other item/s</p>
+                            @endif
+                            @foreach ($order->orderDetails as $orderDetail)
 
-                                    @php
-                                        $totalPrice += $orderDetail->quantity * $orderDetail->product->price;
-                                    @endphp
-                                @endforeach
-                                <div class="d-flex flex-row justify-content-between">
+                                @php
+                                    $totalPrice += $orderDetail->quantity * $orderDetail->product->price;
+                                @endphp
+                            @endforeach
+                            <div class="d-flex flex-row justify-content-between">
+                                @if ($order->status == 'pending')
                                     <p class="lead">Placed {{ $order->created_at->diffForHumans() }}</p>
-                                    <p class="lead">&#8369;{{ $totalPrice }}</p>
-                                </div>
+                                @else
+                                    <p class="lead">Out for delivery {{ $order->updated_at->diffForHumans() }}</p>
+                                @endif
+                                <h4>&#8369;{{ $totalPrice }}</h4>
+                            </div>
                         </a>
                     </div>
                 @endforeach
@@ -62,7 +66,7 @@
                     @php
                         $totalPrice = 0;
                     @endphp
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <a class="card card-body nav-link" href="/orders/{{ $order->slug }}">
                             <h3 class="text-body-secondary">
                                 {{ $order->orderDetails->first()->product->name . ' ' . $order->orderDetails->first()->flavor->name }}
@@ -78,7 +82,7 @@
                             @endforeach
                             <div class="d-flex flex-row justify-content-between">
                                 <p class="lead">Received {{ $order->updated_at->diffForHumans() }}</p>
-                                <p class="lead">&#8369;{{ $totalPrice }}</p>
+                                <h4>&#8369;{{ $totalPrice }}</h4>
                             </div>
                         </a>
                     </div>

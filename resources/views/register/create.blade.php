@@ -2,7 +2,7 @@
     <x-page-header>Register</x-page-header>
     <p class="lead text-center">Register now to avail our services!</p>
     <section class="row mt-3 justify-content-center">
-        <div class="col-6">
+        <div class="col-lg-8">
             <x-form.card action="/register">
                 <div class="card-body">
                     <fieldset>

@@ -1,7 +1,7 @@
 <x-layout>
     <x-page-header>About Us</x-page-header>
     <p class="lead text-center">A look at how to contact us, and our history.</p>
-    <section class="row justify-content-center">
+    <section class="row justify-content-center gy-3">
         <div class="col-lg-6">
             <h2 class="">Contact Information</h2>
             <p class="lead">You can contact us through our contact number:
@@ -17,6 +17,7 @@
                 <p class="card-text">cakehubcity@gmail.com</p>
             </div>
         </div>
+        <hr class="d-lg-none">
         <div class="col-lg-6">
             <h2>The Team</h2>
             <p class="lead">The business was established in 2020. During the pandemic, they started off by selling

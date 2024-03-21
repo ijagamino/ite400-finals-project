@@ -3,31 +3,20 @@
     @if (!$flavors->count())
         <p class="lead text-center">There are no flavors yet, add one?</p>
     @else
-        <table class="table table-flavor">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-group-divider">
                 @foreach ($flavors as $flavor)
                     <tr>
                         <td>
                             {{ $flavor->name }}
                         </td>
-                        <td class="">
-                            <div class="d-flex flex-row justify-content-end">
-                                <a class="btn btn-success me-3" href="/admin/flavors/{{ $flavor->slug }}/edit">Edit</a>
-                                <form method="POST" action="/admin/flavors/{{ $flavor->slug }}">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button onclick="return confirm('Are you sure?')"
-                                        class="btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
+                        <x-table.buttons :item="$flavor" name="flavor" />
                     </tr>
                 @endforeach
             </tbody>

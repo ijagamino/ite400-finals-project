@@ -24,24 +24,14 @@
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
                         <td>&#8369;{{ $product->price }}</td>
-                        <td><a class="btn btn-success" href="/admin/products/{{ $product->slug }}/edit">Edit</a>
-                        </td>
-                        <td>
-                            <form method="POST" action="/admin/products/{{ $product->slug }}">
-                                @csrf
-                                @method('DELETE')
-
-                                <button onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
+                        <x-table.buttons :item="$product" name="product" />
                     </tr>
                 @endforeach
             </tbody>
         </table>
-
     @endif
     <x-form.button>
-        <a class="nav-link" href="/admin/flavors/create">Add a product</a>
+        <a class="nav-link" href="/admin/products/create">Add a product</a>
     </x-form.button>
 </x-user.layout>
 

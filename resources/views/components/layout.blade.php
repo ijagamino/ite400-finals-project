@@ -20,12 +20,19 @@
             <div class="container text-center">
                 <span class="text-white">Copyright &copy; 2024 Cake Hub</span>
             </div>
+            <nav class="navbar navbar-expand-sm">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <x-nav.link href="/about">About</x-nav.link>
+                    </li>
+                    <li class="nav-item">
+                        <x-nav.link href="/contact">Contact</x-nav.link>
+                    </li>
+                </ul>
+            </nav>
         </footer>
     </div>
-
     <x-flash />
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

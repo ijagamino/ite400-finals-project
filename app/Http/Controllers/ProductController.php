@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function search(Request $request)
     {
 
-        return view('products.search', [
+        return view('pages.search', [
             'products' => Product::latest()->filter(request(['search']))->get(),
             'search' => $request->input('search'),
         ]);

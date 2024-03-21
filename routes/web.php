@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminContactController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminFlavorController;
 use App\Http\Controllers\AdminOrderController;
@@ -26,7 +27,6 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'pages.index')->name('home');
 Route::view('/about', 'pages.about');
 
-Route::get('/admin/contacts/', [ContactController::class, 'index'])->middleware('admin');
 Route::get('/contact', [ContactController::class, 'create']);
 Route::post('/contact', [ContactController::class, 'store']);
 
@@ -38,26 +38,24 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 
 Route::get('/login', [SessionController::class, 'create'])->name('login')->middleware('guest');
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
-
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 Route::get('/overview', [SessionController::class, 'index'])->middleware('auth');
 Route::get('/profile', [SessionController::class, 'edit'])->middleware('auth');
 Route::patch('/profile', [SessionController::class, 'update'])->middleware('auth');
 
-Route::get('/cart', [CartItemController::class, 'index'])->middleware('notadmin');
-Route::post('/cart', [CartItemController::class, 'store'])->middleware('notadmin');
-Route::patch('/cart/{product:slug}/{flavor:slug}', [CartItemController::class, 'update'])->middleware('notadmin');
-Route::delete('/cart/{product:slug}/{flavor:slug}', [CartItemController::class, 'destroy'])->middleware('notadmin');
-Route::put('/cart/{product:slug}/{flavor:slug}/add', [CartItemController::class, 'add'])->middleware('notadmin');
-Route::put('/cart/{product:slug}/{flavor:slug}/subtract', [CartItemController::class, 'subtract'])->middleware('notadmin');
+Route::get('/cart', [CartItemController::class, 'index'])->middleware('auth')->middleware('notadmin');
+Route::post('/cart', [CartItemController::class, 'store'])->middleware('auth')->middleware('notadmin');
+Route::patch('/cart/{product:slug}/{flavor:slug}', [CartItemController::class, 'update'])->middleware('auth')->middleware('notadmin');
+Route::delete('/cart/{product:slug}/{flavor:slug}', [CartItemController::class, 'destroy'])->middleware('auth')->middleware('notadmin');
+Route::put('/cart/{product:slug}/{flavor:slug}/add', [CartItemController::class, 'add'])->middleware('auth')->middleware('notadmin');
+Route::put('/cart/{product:slug}/{flavor:slug}/subtract', [CartItemController::class, 'subtract'])->middleware('auth')->middleware('notadmin');
 
-Route::post('/orders', [OrderController::class, 'store']);
-Route::get('/orders/{order:slug}', [OrderController::class, 'show']);
-Route::patch('/orders/{order:slug}', [OrderController::class, 'update']);
+Route::post('/orders', [OrderController::class, 'store'])->middleware('auth');
+Route::get('/orders/{order:slug}', [OrderController::class, 'show'])->middleware('auth');
+Route::patch('/orders/{order:slug}', [OrderController::class, 'update'])->middleware('auth');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
-Route::get('/admin/profile', [AdminController::class, 'edit'])->middleware('admin');
 
 Route::get('/admin/flavors', [AdminFlavorController::class, 'index'])->middleware('admin');
 Route::get('/admin/flavors/create', [AdminFlavorController::class, 'create'])->middleware('admin');
@@ -75,3 +73,6 @@ Route::delete('/admin/products/{product:slug}', [AdminProductController::class, 
 
 Route::get('/admin/orders', [AdminOrderController::class, 'index'])->middleware('admin');
 Route::patch('/admin/orders/{order:slug}', [AdminOrderController::class, 'update'])->middleware('admin');
+Route::get('/admin/orders/{order:slug}', [AdminOrderController::class, 'show'])->middleware('admin');
+
+Route::get('/admin/contacts/', [AdminContactController::class, 'index'])->middleware('admin');

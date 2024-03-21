@@ -1,6 +1,6 @@
-<aside class="col-2">
+<aside class="col-lg-2">
     <nav class="navbar">
-        <ul class="nav flex-column">
+        <ul class="nav d-inline-flex d-lg-flex flex-lg-column">
             <li class="nav-item">
                 <a class="nav-link" href="/overview">Overview</a>
             </li>
@@ -30,7 +30,7 @@
                 </li>
             @endif
         </ul>
-        <div class="vr"></div>
+        <div class="d-none d-lg-block vr"></div>
     </nav>
 </aside>
 

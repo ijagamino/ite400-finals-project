@@ -2,7 +2,7 @@
     <x-page-header>Log In</x-page-header>
     <p class="lead text-center">Log in, it's easy!</p>
     <section class="row mt-3 justify-content-center">
-        <div class="col-6">
+        <div class="col-lg-8">
             <x-form.card action="/login">
                 <div class="card-body">
                     <x-form.input-floating name="username" />

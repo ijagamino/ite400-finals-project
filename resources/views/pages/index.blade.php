@@ -23,7 +23,8 @@
                     </header>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <a href="/menu" class="display-6 ms-auto link-underline link-underline-opacity-0">Browse menu
+                    <a href="/menu"
+                        class="display-6 ms-auto ms-auto ms-lg-auto link-underline link-underline-opacity-0">Browse menu
                         <x-icon.arrow size="32" />
                     </a>
                 </div>

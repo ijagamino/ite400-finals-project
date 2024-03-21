@@ -13,12 +13,17 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-group-divider">
                 @foreach ($orders as $order)
                     <tr>
-                        <th scope="row">{{ $order->slug }}</th>
+                        <th scope="row">
+                            <a class="link-underline link-underline-opacity-0" href="/admin/orders/{{ $order->slug }}">
+                                {{ $order->slug }}
+                            </a>
+                        </th>
                         <td>{{ $order->user->first_name . ' ' . $order->user->last_name }}</td>
-                        <td>{{ $order->user->street . ' ' . $order->user->barangay . ' ' . $order->user->city }}</td>
+                        <td>{{ $order->user->street . ' ' . $order->user->barangay . ' ' . $order->user->city }}
+                        </td>
                         @if ($order->status == 'pending')
                             <td>
                                 Pending
@@ -49,7 +54,6 @@
                                 <button class="btn btn-primary btn-lg" disabled>Confirm</button>
                             </td>
                         @endif
-                        </td>
                     </tr>
                 @endforeach
             </tbody>

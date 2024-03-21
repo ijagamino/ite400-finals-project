@@ -20,4 +20,12 @@ class AdminOrderController extends Controller
 
         return back()->with('success', 'Order is now out for delivery');
     }
+
+    public function show(Order $order)
+    {
+        return view('admin.orders.show', [
+            'order' => $order,
+            'orderDetails' => $order->orderDetails,
+        ]);
+    }
 }
