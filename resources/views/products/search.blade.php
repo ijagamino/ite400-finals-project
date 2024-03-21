@@ -8,7 +8,7 @@
         <p class="lead text-center">Results for "{{ $_GET['search'] }}"</p>
         <div class="row row-cols-3 mt-4 justify-content-center">
             @foreach ($products as $product)
-                <x-product-card :product="$product" />
+                <x-product.card :product="$product" />
             @endforeach
         </div>
     @endif

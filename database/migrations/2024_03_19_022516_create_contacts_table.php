@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->default('anonymous');
-            $table->string('email')->default('anonymous');
+            $table->string('name')->nullable()->default('anonymous');
+            $table->string('email')->nullable()->default('anonymous');
             $table->text('message');
             $table->timestamps();
         });

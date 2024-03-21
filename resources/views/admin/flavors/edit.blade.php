@@ -1,5 +1,5 @@
 <x-user.layout>
-    <x-page-header>Edit product</x-page-header>
+    <x-page-header>Edit flavor</x-page-header>
     <form method="POST" action="/admin/flavors/{{ $flavor->slug }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')

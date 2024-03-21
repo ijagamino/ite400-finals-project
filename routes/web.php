@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'pages.index')->name('home');
 Route::view('/about', 'pages.about');
 
+Route::get('/admin/contacts/', [ContactController::class, 'index'])->middleware('admin');
 Route::get('/contact', [ContactController::class, 'create']);
 Route::post('/contact', [ContactController::class, 'store']);
 
@@ -44,12 +45,12 @@ Route::get('/overview', [SessionController::class, 'index'])->middleware('auth')
 Route::get('/profile', [SessionController::class, 'edit'])->middleware('auth');
 Route::patch('/profile', [SessionController::class, 'update'])->middleware('auth');
 
-Route::get('/cart', [CartItemController::class, 'index']);
-Route::post('/cart', [CartItemController::class, 'store'])->middleware('auth');
-Route::patch('/cart/{product:slug}/{flavor:slug}', [CartItemController::class, 'update']);
-Route::delete('/cart/{product:slug}/{flavor:slug}', [CartItemController::class, 'destroy']);
-Route::put('/cart/{product:slug}/{flavor:slug}/add', [CartItemController::class, 'add']);
-Route::put('/cart/{product:slug}/{flavor:slug}/subtract', [CartItemController::class, 'subtract']);
+Route::get('/cart', [CartItemController::class, 'index'])->middleware('notadmin');
+Route::post('/cart', [CartItemController::class, 'store'])->middleware('notadmin');
+Route::patch('/cart/{product:slug}/{flavor:slug}', [CartItemController::class, 'update'])->middleware('notadmin');
+Route::delete('/cart/{product:slug}/{flavor:slug}', [CartItemController::class, 'destroy'])->middleware('notadmin');
+Route::put('/cart/{product:slug}/{flavor:slug}/add', [CartItemController::class, 'add'])->middleware('notadmin');
+Route::put('/cart/{product:slug}/{flavor:slug}/subtract', [CartItemController::class, 'subtract'])->middleware('notadmin');
 
 Route::post('/orders', [OrderController::class, 'store']);
 Route::get('/orders/{order:slug}', [OrderController::class, 'show']);

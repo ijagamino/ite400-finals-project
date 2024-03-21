@@ -19,7 +19,7 @@
                         <th scope="row">{{ $order->slug }}</th>
                         <td>{{ $order->user->first_name . ' ' . $order->user->last_name }}</td>
                         <td>{{ $order->user->street . ' ' . $order->user->barangay . ' ' . $order->user->city }}</td>
-                        @if (!$order->status == 'pending')
+                        @if ($order->status == 'pending')
                             <td>
                                 Pending
                             </td>
@@ -28,6 +28,17 @@
                                     @csrf
                                     @method('PATCH')
                                     <button class="btn btn-primary btn-lg">Confirm</button>
+                                </form>
+                            </td>
+                        @elseif ($order->status == 'complete')
+                            <td>
+                                Complete
+                            </td>
+                            <td>
+                                <form method="POST" action="/admin/orders/{{ $order->slug }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button disabled class="btn btn-primary btn-lg">Confirm</button>
                                 </form>
                             </td>
                         @else

@@ -20,31 +20,28 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'password' => 'admin123',
             'first_name' => 'Admin',
-            'last_name' => 'Strator',
-            'street' => 'samwer',
-            'barangay' => 'sa',
-            'city' => 'pinas',
-            'landmark' => 'Secret',
+            'last_name' => 'Admin',
+            'street' => '',
+            'barangay' => '',
+            'city' => '',
+            'landmark' => '',
             'email' => 'admin@gmail.com',
-            'mobile_number' => '09282125111',
+            'mobile_number' => '',
             'admin' => true,
         ]);
 
         User::create([
             'username' => 'aikhen',
             'password' => '123456',
-            'first_name' => 'Aikhen',
+            'first_name' => 'Aikhen Cyron',
             'last_name' => 'Osuna',
-            'street' => 'somewhere',
-            'barangay' => 'in',
-            'city' => 'philippines',
-            'landmark' => 'malapit kay denis ',
+            'street' => 'Street',
+            'barangay' => 'Barangay',
+            'city' => 'City',
+            'landmark' => 'malapit kay denise',
             'email' => 'aikhen@email.com',
             'mobile_number' => '09876543210',
-            'admin' => false,
         ]);
-
-        User::factory()->create();
 
         Flavor::create([
             'slug' => 'chocolate',
