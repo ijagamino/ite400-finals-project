@@ -17,9 +17,11 @@
             @endforeach
             <h2 class="text-center mt-3">Total price: &#8369;{{ $totalPrice }}</h2>
             @if ($order->status == 'pending')
-                <p class="text-body-secondary text-center">Your order is still pending, wait for confirmation
-                </p>
-                <button disabled class="btn btn-primary btn-lg">Confirm</button>
+                <div class="d-flex flex-column align-items-center">
+                    <p class="text-body-secondary text-center">Your order is still pending, wait for confirmation
+                    </p>
+                    <button disabled class="btn btn-primary btn-lg">Confirm</button>
+                </div>
             @elseif ($order->status == 'ongoing')
                 <div class="d-flex flex-column align-items-center">
                     <p class="text-body-secondary">Received the order already? Press the button below</p>
@@ -31,8 +33,10 @@
                     </form>
                 </div>
             @else
-                <p class="text-body-secondary text-center">You have received your order!</p>
-                <button disabled class="btn btn-primary btn-lg">Confirm</button>
+                <div class="d-flex flex-column align-items-center">
+                    <p class="text-body-secondary text-center">You have received your order!</p>
+                    <button disabled class="btn btn-primary btn-lg">Confirm</button>
+                </div>
             @endif
         </div>
     </section>

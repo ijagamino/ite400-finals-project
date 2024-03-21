@@ -30,7 +30,7 @@
                         $totalPrice = 0;
                     @endphp
                     <div class="col-lg-6">
-                        <a class="card card-body nav-link" href="/orders/{{ $order->slug }}">
+                        <a class="card card-body shadow nav-link" href="/orders/{{ $order->slug }}">
                             <h3 class="text-body-secondary">
                                 {{ $order->orderDetails->first()->product->name . ' ' . $order->orderDetails->first()->flavor->name }}
                             </h3>
@@ -62,30 +62,32 @@
                 <p class="lead">No recent orders</p>
             @else
                 @foreach ($orders->where('status', 'complete') as $order)
+                    @if ($loop->index < 4)
 
-                    @php
-                        $totalPrice = 0;
-                    @endphp
-                    <div class="col-lg-6">
-                        <a class="card card-body nav-link" href="/orders/{{ $order->slug }}">
-                            <h3 class="text-body-secondary">
-                                {{ $order->orderDetails->first()->product->name . ' ' . $order->orderDetails->first()->flavor->name }}
-                            </h3>
-                            @if ($order->orderDetails->count() > 1)
-                                <p class="lead">...and {{ $order->orderDetails->count() - 1 }} other item/s</p>
-                            @endif
-                            @foreach ($order->orderDetails as $orderDetail)
+                        @php
+                            $totalPrice = 0;
+                        @endphp
+                        <div class="col-lg-6">
+                            <a class="card card-body shadow nav-link" href="/orders/{{ $order->slug }}">
+                                <h3 class="text-body-secondary">
+                                    {{ $order->orderDetails->first()->product->name . ' ' . $order->orderDetails->first()->flavor->name }}
+                                </h3>
+                                @if ($order->orderDetails->count() > 1)
+                                    <p class="lead">...and {{ $order->orderDetails->count() - 1 }} other item/s</p>
+                                @endif
+                                @foreach ($order->orderDetails as $orderDetail)
 
-                                @php
-                                    $totalPrice += $orderDetail->quantity * $orderDetail->product->price;
-                                @endphp
-                            @endforeach
-                            <div class="d-flex flex-row justify-content-between">
-                                <p class="lead">Received {{ $order->updated_at->diffForHumans() }}</p>
-                                <h4>&#8369;{{ $totalPrice }}</h4>
-                            </div>
-                        </a>
-                    </div>
+                                    @php
+                                        $totalPrice += $orderDetail->quantity * $orderDetail->product->price;
+                                    @endphp
+                                @endforeach
+                                <div class="d-flex flex-row justify-content-between">
+                                    <p class="lead">Received {{ $order->updated_at->diffForHumans() }}</p>
+                                    <h4>&#8369;{{ $totalPrice }}</h4>
+                                </div>
+                            </a>
+                        </div>
+                    @endif
                 @endforeach
             @endif
         </div>
