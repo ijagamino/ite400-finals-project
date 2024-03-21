@@ -6,23 +6,7 @@
             <x-form.card action="/login">
                 <div class="card-body">
                     <x-form.input-floating name="username" />
-                    <x-form.input-floating name="password" type="password" class="mt-3" />
-                    <div class="mt-3">
-                        <input class="btn-check" type="checkbox" id="checkbox">
-                        <label class="btn btn-outline-primary" for="checkbox"
-
-                            onclick="{
-  var x = document.getElementById('password');
-  if (x.type === 'password')
-  {
-  x.type = 'text';
-  }
-  else
-  {
-  x.type = 'password';
-  } }">
-                            Show password</label>
-                    </div>
+                    <x-form.input-floating-password />
 
                     <div class="row justify-content-center mt-5">
                         <div class="col-auto">

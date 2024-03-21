@@ -1,6 +1,18 @@
 @props(['item'])
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 @php
     $quantity = $item->quantity;
     $price = $item->product->price;
@@ -29,23 +41,25 @@
                         <form method="POST" action="/cart/{{ $item->product->slug }}/{{ $item->flavor->slug }}">
                             @csrf
                             @method('DELETE')
-                            <button class="btn" onclick="return confirm('Are you sure?')"><x-icon.cart-x-fill
-                                    size="32" /></button>
+                            <button class="btn btn-outline-primary border-0"
+                                onclick="return confirm('Are you sure?')"><x-icon.cart-x-fill size="32" /></button>
                         </form>
                         <div class="d-flex align-items-center">
                             <form method="POST"
                                 action="/cart/{{ $item->product->slug }}/{{ $item->flavor->slug }}/subtract">
                                 @csrf
                                 @method('PUT')
-                                <button class="btn"><x-icon.cart-dash-fill size="32" /></button>
+                                <button class="btn btn-outline-primary border-0"><x-icon.cart-dash-fill
+                                        size="32" /></button>
                             </form>
-                            <input class="form-control" name="quantity" type="number" value="{{ $item->quantity }}"
-                                disabled>
+                            <input class="form-control mx-3" name="quantity" type="number"
+                                value="{{ $item->quantity }}" disabled>
                             <form method="POST"
                                 action="/cart/{{ $item->product->slug }}/{{ $item->flavor->slug }}/add">
                                 @csrf
                                 @method('PUT')
-                                <button class="btn"><x-icon.cart-plus-fill size="32" /></button>
+                                <button class="btn btn-outline-primary border-0"><x-icon.cart-plus-fill
+                                        size="32" /></button>
                             </form>
                         </div>
                         <h2>&#8369;{{ $totalItemPrice }}</h2>
