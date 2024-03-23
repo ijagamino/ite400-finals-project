@@ -7,6 +7,7 @@
 
             <x-form.input name="name" :value="old('name', $product->name)" required />
             <x-form.textarea name="description">{{ old('description', $product->description) }}</x-form.textarea>
+            <x-form.input name="stock" type="number" :value="old('stock', $product->stock)" required />
             <x-form.input name="price" type="number" :value="old('price', $product->price)" required />
             <div class="mt-3">
                 <x-form.input name="thumbnail" type="file" :value="old('thumbnail', $product->thumbnail)" />

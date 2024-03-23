@@ -27,6 +27,7 @@ class AdminProductController extends Controller
             'thumbnail' => ['required', 'image'],
             'name' => ['required', 'max:255'],
             'description' => ['required'],
+            'stock' => [],
             'price' => ['required'],
         ]);
 
