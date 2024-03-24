@@ -6,7 +6,6 @@
                 <x-form.input name="thumbnail" type="file" />
                 <x-form.input name="name" required />
                 <x-form.input name="description" required />
-                <x-form.input name="stock" type="number" />
                 <x-form.input name="price" type="number" required />
                 <x-form.button>Add new product</x-form.button>
             </div>

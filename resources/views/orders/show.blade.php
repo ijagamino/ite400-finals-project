@@ -22,6 +22,11 @@
                     </p>
                     <button disabled class="btn btn-primary btn-lg">Confirm</button>
                 </div>
+            @elseif ($order->status == 'preparing')
+                <div class="d-flex flex-column align-items-center">
+                    <p class="text-body-secondary text-center">Your order is now being prepared</p>
+                    <button disabled class="btn btn-primary btn-lg">Confirm</button>
+                </div>
             @elseif ($order->status == 'ongoing')
                 <div class="d-flex flex-column align-items-center">
                     <p class="text-body-secondary">Received the order already? Press the button below</p>

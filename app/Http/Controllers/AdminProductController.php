@@ -27,7 +27,6 @@ class AdminProductController extends Controller
             'thumbnail' => ['required', 'image'],
             'name' => ['required', 'max:255'],
             'description' => ['required'],
-            'stock' => [],
             'price' => ['required'],
         ]);
 
@@ -35,7 +34,7 @@ class AdminProductController extends Controller
 
         Product::create($attributes);
 
-        return redirect('/admin')->with('success', 'Product added successfully');
+        return redirect('/admin/products')->with('success', "{$attributes['name']} added successfully");
     }
 
     public function edit(Product $product)
@@ -67,6 +66,6 @@ class AdminProductController extends Controller
     {
         $product->delete();
 
-        return back()->with('success', 'Product deleted');
+        return back()->with('success', "{$product->name} deleted");
     }
 }

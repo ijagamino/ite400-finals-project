@@ -32,13 +32,22 @@
                                 <form method="POST" action="/admin/orders/{{ $order->slug }}">
                                     @csrf
                                     @method('PATCH')
-                                    <button class="btn btn-primary btn-lg">Confirm</button>
+                                    <button class="btn btn-primary btn-lg">Process</button>
                                 </form>
                             </td>
-                        @elseif ($order->status == 'complete')
+                        @elseif ($order->status == 'preparing')
                             <td>
-                                Complete
+                                Preparing
                             </td>
+                            <td>
+                                <form method="POST" action="/admin/orders/{{ $order->slug }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button class="btn btn-primary btn-lg">Deliver</button>
+                                </form>
+                            </td>
+                        @elseif ($order->status == 'ongoing')
+                            <td>Out for delivery</td>
                             <td>
                                 <form method="POST" action="/admin/orders/{{ $order->slug }}">
                                     @csrf
@@ -47,9 +56,7 @@
                                 </form>
                             </td>
                         @else
-                            <td>
-                                Out for delivery
-                            </td>
+                            <td>Complete</td>
                             <td>
                                 <button class="btn btn-primary btn-lg" disabled>Confirm</button>
                             </td>

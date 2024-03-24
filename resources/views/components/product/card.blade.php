@@ -6,7 +6,6 @@
             src='{{ asset("/storage/{$product->thumbnail}") }}' alt="">
         <div class="card-body" style="height: 20rem">
             <h3 class="card-title"> {{ $product->name }} </h3>
-            <p class="card-text"> &#8369;{{ $product->price }}</p>
             <p class="card-text"> {{ $product->description }}</p>
         </div>
     </div>

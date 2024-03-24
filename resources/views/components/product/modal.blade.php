@@ -13,7 +13,7 @@
                     <img class="w-100 object-fit-cover rounded" style="height: 25rem"
                         src='{{ asset("/storage/{$product->thumbnail}") }}' alt="">
                 </div>
-                <div class="col">
+                <div class="col mt-3">
                     <form method="POST" action="/cart" name="{{ $product->slug }}">
                         @csrf
                         <input type="number" name="product_id" hidden value="{{ $product->id }}">
@@ -38,11 +38,10 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             <button class="btn btn-primary">Add to cart</button>
                         </div>
-
                     </form>
+                    <p class="col text-end" id="{{ $product->slug }}">Total price: &#8369;{{ $product->price }}
+                    </p>
                 </div>
-                <p class="col text-end" id="{{ $product->slug }}">Total price: &#8369;{{ $product->price }}
-                </p>
             </div>
         </div>
     </div>

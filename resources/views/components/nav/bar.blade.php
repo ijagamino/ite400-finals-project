@@ -13,6 +13,11 @@
                         <x-nav.link href="/menu">Menu</x-nav.link>
                     </li>
                     @auth
+                        @if (!auth()->user()->admin)
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/cart">Cart</a>
+                            </li>
+                        @endif
                         <li class="nav-item dropdown">
                             <a class="nav-link text-white dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,14 +30,10 @@
                                 <li>
                                     <a class="dropdown-item" href="/profile">Profile</a>
                                 </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                @if (!auth()->user()->admin)
+                                @if (auth()->user()->admin)
                                     <li>
-                                        <a class="dropdown-item" href="/cart">Cart</a>
+                                        <hr class="dropdown-divider">
                                     </li>
-                                @else
                                     <li>
                                         <a class="dropdown-item" href="/admin">Dashboard</a>
                                     </li>

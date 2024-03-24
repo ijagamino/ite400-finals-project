@@ -16,7 +16,16 @@ class AdminOrderController extends Controller
 
     public function update(Request $request, Order $order)
     {
-        $order->update(['status' => 'ongoing']);
+        if ($order->status == 'pending') {
+            $order->update(['status' => 'preparing']);
+
+            return back()->with('success', 'Order is now being prepared');
+        }
+        if ($order->status == 'preparing') {
+            $order->update(['status' => 'ongoing']);
+
+            return back()->with('success', 'Order is now being prepared');
+        }
 
         return back()->with('success', 'Order is now out for delivery');
     }

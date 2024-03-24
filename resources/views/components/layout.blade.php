@@ -20,12 +20,12 @@
             <div class="container text-center">
                 <span class="text-white">Copyright &copy; 2024 Cake Hub</span>
             </div>
-            <nav class="navbar navbar-expand-sm">
-                <ul class="navbar-nav mx-auto">
+            <nav class="navbar navbar-expand-lg gx-3">
+                <ul class="navbar-nav mx-auto flex-row">
                     <li class="nav-item">
                         <x-nav.link href="/about">About</x-nav.link>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ms-3">
                         <x-nav.link href="/contact">Contact</x-nav.link>
                     </li>
                 </ul>

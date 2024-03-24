@@ -10,7 +10,6 @@
                     <th scope="col">Thumbnail</th>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Stock</th>
                     <th scope="col">Price</th>
                     <th scope="col"></th>
                 </tr>
@@ -24,7 +23,6 @@
                         </td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
-                        <td>{{ $product->stock }}</td>
                         <td>&#8369;{{ $product->price }}</td>
                         <x-table.buttons :item="$product" name="product" />
                     </tr>

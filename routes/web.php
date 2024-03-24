@@ -46,10 +46,11 @@ Route::patch('/profile', [SessionController::class, 'update'])->middleware('auth
 
 Route::get('/cart', [CartItemController::class, 'index'])->middleware('auth')->middleware('notadmin');
 Route::post('/cart', [CartItemController::class, 'store'])->middleware('auth')->middleware('notadmin');
-Route::patch('/cart/{product:slug}/{flavor:slug}', [CartItemController::class, 'update'])->middleware('auth')->middleware('notadmin');
+Route::patch('/cart/{product:slug}/{flavor:slug}/', [CartItemController::class, 'updateFlavor'])->middleware('auth')->middleware('notadmin');
+Route::patch('/cart/{product:slug}/{flavor:slug}/quantity', [CartItemController::class, 'updateQuantity'])->middleware('auth')->middleware('notadmin');
+Route::patch('/cart/{product:slug}/{flavor:slug}/add', [CartItemController::class, 'incrementQuantity'])->middleware('auth')->middleware('notadmin');
+Route::patch('/cart/{product:slug}/{flavor:slug}/subtract', [CartItemController::class, 'decrementQuantity'])->middleware('auth')->middleware('notadmin');
 Route::delete('/cart/{product:slug}/{flavor:slug}', [CartItemController::class, 'destroy'])->middleware('auth')->middleware('notadmin');
-Route::put('/cart/{product:slug}/{flavor:slug}/add', [CartItemController::class, 'add'])->middleware('auth')->middleware('notadmin');
-Route::put('/cart/{product:slug}/{flavor:slug}/subtract', [CartItemController::class, 'subtract'])->middleware('auth')->middleware('notadmin');
 
 Route::post('/orders', [OrderController::class, 'store'])->middleware('auth');
 Route::get('/orders/{order:slug}', [OrderController::class, 'show'])->middleware('auth');

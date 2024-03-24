@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
@@ -14,16 +13,16 @@ class OrderController extends Controller
     {
         $user = $request->user();
         $attributes = $request->all();
-
         $attributes['user_id'] = $user->id;
         $attributes['slug'] = Str::random();
-
-        $order = Order::create($attributes);
-        $cartItems = CartItem::where('user_id', $user->id);
+        $cartItems = $user->cartItems;
 
         if (! $cartItems->count()) {
             return redirect('/menu')->with('success', 'You have not yet added anything to the cart');
         }
+
+        $order = Order::create($attributes);
+
         for ($i = 0; $i < $cartItems->count(); $i++) {
             OrderDetail::create([
                 'order_id' => $order->id,
@@ -33,7 +32,7 @@ class OrderController extends Controller
             ]);
         }
 
-        $cartItems->delete();
+        $user->cartItems()->delete();
 
         return redirect('/orders/'.$order->slug)->with('success', 'Order placed');
     }

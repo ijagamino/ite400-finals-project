@@ -10,8 +10,7 @@
             <div class="card-body">
                 <p hidden class="_getme" id="_getme"></p>
                 @foreach ($cartItems as $cartItem)
-                    <x-cart.card-horizontal :item="$cartItem" />
-                    <x-cart.modal :cartItem="$cartItem" :product="$cartItem->product" :flavor="$cartItem->flavor" :flavors="$flavors" />
+                    <x-cart.card-horizontal :cartItem="$cartItem" :flavors="$flavors" />
 
                     @php
                         $totalItemPrice = $cartItem->quantity * $cartItem->product->price;
@@ -21,9 +20,9 @@
                 <form method="POST" action="/orders">
                     @csrf
                     @foreach ($cartItems as $cartItem)
-                        <input hidden name="product_id[]" type="text" value="{{ $cartItem->product->id }}" required>
-                        <input hidden name="flavor_id[]" type="text" value="{{ $cartItem->flavor->id }}" required>
-                        <input hidden name="quantity[]" type="text" value="{{ $cartItem->quantity }}" required>
+                        <input hidden name="product_id[]" type="number" value="{{ $cartItem->product->id }}" required>
+                        <input hidden name="flavor_id[]" type="number" value="{{ $cartItem->flavor->id }}" required>
+                        <input hidden name="quantity[]" type="number" value="{{ $cartItem->quantity }}" required>
                     @endforeach
                     <div class="d-flex flex-column mt-3 align-items-center">
                         <h2>&#8369;{{ $totalPrice }}</h2>
